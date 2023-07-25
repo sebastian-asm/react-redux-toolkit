@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
 import { startUserWithEmailPassword } from '../../store/auth/thunks'
-import { useForm } from '../../../hooks'
+import { useForm } from '../../hooks'
 import { useState } from 'react'
 import AuthLayout from '../layout/AuthLayout'
 

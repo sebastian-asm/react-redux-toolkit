@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography'
 
 import Google from '@mui/icons-material/Google'
 
-import { useForm } from '../../../hooks'
+import { useForm } from '../../hooks'
 import { startGoogleSignIn, startLoginEmailPassword } from '../../store/auth'
 import AuthLayout from '../layout/AuthLayout'
 

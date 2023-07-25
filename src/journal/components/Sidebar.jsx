@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Box from '@mui/material/Box'
@@ -10,18 +11,26 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
 
 import TurnedInNotIcon from '@mui/icons-material/TurnedInNot'
 
 export default function Sidebar({ drawerWidth }) {
+  const { displayName } = useSelector((state) => state.auth)
+
   return (
     <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
       <Drawer
         variant="permanent"
         open
-        sx={{ display: { xs: 'block' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth } }}
+        sx={{
+          display: { xs: 'block' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+        }}
       >
-        <Toolbar variant="h6">Sebas</Toolbar>
+        <Toolbar>
+          <Typography variant="h6">{displayName}</Typography>
+        </Toolbar>
         <Divider />
         <List>
           {['Ene', 'Feb', 'Mar'].map((text) => (
