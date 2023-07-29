@@ -4,19 +4,15 @@ import PropTypes from 'prop-types'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
-import Grid from '@mui/material/Grid'
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
-import TurnedInNotIcon from '@mui/icons-material/TurnedInNot'
+import { SidebarItem } from './'
 
 export default function Sidebar({ drawerWidth }) {
   const { displayName } = useSelector((state) => state.auth)
+  const { notes } = useSelector((state) => state.journal)
 
   return (
     <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
@@ -33,18 +29,8 @@ export default function Sidebar({ drawerWidth }) {
         </Toolbar>
         <Divider />
         <List>
-          {['Ene', 'Feb', 'Mar'].map((text) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <TurnedInNotIcon />
-                </ListItemIcon>
-                <Grid container>
-                  <ListItemText primary={text} />
-                  <ListItemText secondary="dlskfjsdlkfsd sdlgjdflgkjdflkg dfgldfkjglkd" />
-                </Grid>
-              </ListItemButton>
-            </ListItem>
+          {notes.map((note) => (
+            <SidebarItem key={note.id} {...note} />
           ))}
         </List>
       </Drawer>
