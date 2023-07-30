@@ -1,4 +1,6 @@
 import { useMemo } from 'react'
+
+import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Grid from '@mui/material/Grid'
@@ -9,11 +11,21 @@ import ListItemText from '@mui/material/ListItemText'
 
 import TurnedInNotIcon from '@mui/icons-material/TurnedInNot'
 
-export default function SidebarItem({ title, body, id }) {
-  const newTitle = useMemo(() => (title.length > 15 ? title.substring(0, 15) : title), [title])
+import { setActiveNote } from '../../store/journal'
+
+export default function SidebarItem({ title, body, id, date, imageUrls = [] }) {
+  const dispatch = useDispatch()
+
+  const newTitle = useMemo(() => {
+    return title.length > 15 ? `${title.substring(0, 15)}...` : title
+  }, [title])
+
+  const handleActiveNote = () => {
+    dispatch(setActiveNote({ id, title, body, date, imageUrls }))
+  }
 
   return (
-    <ListItem key={id} disablePadding>
+    <ListItem onClick={handleActiveNote} disablePadding>
       <ListItemButton>
         <ListItemIcon>
           <TurnedInNotIcon />
@@ -30,5 +42,7 @@ export default function SidebarItem({ title, body, id }) {
 SidebarItem.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired,
+  imageUrls: PropTypes.array
 }
