@@ -19,8 +19,8 @@ export const startNewNote = () => {
     dispatch(savingNewNote())
     const { uid } = getState().auth
     const newNote = {
-      title: 'test',
-      body: 'test',
+      title: '',
+      body: '',
       date: new Date().getTime(),
       imageUrls: []
     }

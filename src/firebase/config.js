@@ -2,7 +2,10 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore/lite'
 
-const { VITE_FIREBASE_APIKEY } = import.meta.env
+import { getEnvironments } from '../helpers'
+
+// const { VITE_FIREBASE_APIKEY } = import.meta.env
+const { VITE_FIREBASE_APIKEY } = getEnvironments()
 
 const firebaseConfig = {
   apiKey: VITE_FIREBASE_APIKEY,

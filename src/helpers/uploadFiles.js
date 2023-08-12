@@ -13,7 +13,7 @@ export default async function uploadFiles(file) {
     if (!resp.ok) throw new Error('Error al subir el archivo')
     const { secure_url } = await resp.json()
     return secure_url
-  } catch (error) {
-    console.log(error)
+  } catch {
+    return null
   }
 }

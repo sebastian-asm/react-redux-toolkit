@@ -43,7 +43,7 @@ export default function LoginPage() {
 
   return (
     <AuthLayout title="Iniciar sesión">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="form">
         <Grid container>
           <Grid item xs={12} sx={{ mb: 3 }}>
             <TextField
@@ -63,6 +63,7 @@ export default function LoginPage() {
               name="password"
               value={password}
               onChange={onInputChange}
+              inputProps={{ 'data-testid': 'password' }}
             ></TextField>
           </Grid>
 
@@ -90,6 +91,7 @@ export default function LoginPage() {
                 fullWidth
                 onClick={handleGoogleSignIn}
                 disabled={isAuthenticating}
+                aria-label="btn-google"
               >
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
